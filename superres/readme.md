@@ -30,3 +30,23 @@ I've included a small series of sample images so that you can test the script on
 ## DEPENDS:
 
 You must have imagemagick and hugin-tools installed. The script invokes `convert` from imagemagick to do the upscaling and image averaging, and `align_image_stack` from hugin-tools to align the hand held images. On *buntu distros, install them with apt: `sudo apt-get install imagemagick hugin-tools` or with your favorite package manager.
+
+## Troubleshooting:
+
+If ImageMagick runs out of resources, try increasing limits in the config file per ![this issue](https://github.com/ImageMagick/ImageMagick/issues/396)
+
+`/etc/ImageMagic-6/policy.xml`
+
+For example...
+
+Resource limits:
+  Width: 256KP
+  Height: 256KP
+  Area: 4GP
+  Memory: 8GiB
+  Map: 8GiB
+  Disk: 16GiB
+  File: 768
+  Thread: 8
+  Throttle: 0
+  Time: unlimited
